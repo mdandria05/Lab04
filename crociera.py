@@ -1,5 +1,4 @@
 from csv import reader
-import cabine
 from cabine import Cabine
 from passeggeri import Passeggeri
 from cDeluxe import CDeluxe
