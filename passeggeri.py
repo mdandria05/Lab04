@@ -22,3 +22,5 @@ class Passeggeri:
         else: return f'{self.__cod} | {self.__nome} | {self.__cognome} | {self.__cabina}'
     def __repr__(self):
         return f'cod = {self.__cod} | nome = {self.__nome=} | cognome = {self.__cognome=}'
+    def __eq__(self,cod):
+        return self.__cod == cod

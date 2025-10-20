@@ -44,19 +44,27 @@ class Crociera:
     def assegna_passeggero_a_cabina(self, codice_cabina, codice_passeggero):
         """Associa una cabina a un passeggero"""
         # TODO
+        for passeggero in self.__passeggeri:
+            if passeggero.cabina is not None and passeggero == codice_passeggero:
+                raise Exception(f"Il passeggero \"{codice_passeggero}\" ha già una cabina assegnata (cabina assegnata = \"{passeggero.cabina}\")")
+            elif passeggero.cabina == codice_cabina:
+                raise Exception(f"La cabina \"{codice_cabina}\" è gia stata assegnata al passeggero \"{passeggero.cod}\".")
+        trovato = False
         for cabina in self.__cabine:
-            if cabina.cod == codice_cabina:
+            if cabina == codice_cabina:
                 for passeggero in self.__passeggeri:
-                    if codice_passeggero == passeggero.cod:
+                    if passeggero == codice_passeggero:
                         passeggero.cabina = codice_cabina
                         print(f'Passeggero: {codice_passeggero} associato alla cabina: {codice_cabina}')
+                        trovato = True
                         return None
-            else: raise Exception('Associazione non avvenuta')
+        if not trovato:
+            raise Exception("Associazione non avvenuta...")
 
     def cabine_ordinate_per_prezzo(self):
         """Restituisce la lista ordinata delle cabine in base al prezzo"""
         # TODO
-        cabine_ordinate = sorted(self.__cabine, key=lambda x: x.prezzo)
+        cabine_ordinate = sorted(self.__cabine)
         return cabine_ordinate
 
     def elenca_passeggeri(self):

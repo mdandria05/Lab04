@@ -13,4 +13,7 @@ class Cabine:
         return self.__prezzo
     def __str__(self):
         return f'cod = {self.__cod} | numero letti = {self.__n_letti} | ponte = {self.__ponte} | prezzo = {self.prezzo} | massimo animali = {self.__n_animali}'
-
+    def __lt__(self, other):
+        return self.__prezzo < other.__prezzo
+    def __eq__(self, cod):
+        return self.__cod == cod
